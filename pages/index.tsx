@@ -1,10 +1,11 @@
-import { Welcome } from '../components/Welcome/Welcome';
+
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { AuthenticationForm } from '@/components/Autentification/AutentificationForm';
 
 export default function HomePage() {
   return (
     <>
-      <Welcome />
+      <AuthenticationForm />
       <ColorSchemeToggle />
     </>
   );
