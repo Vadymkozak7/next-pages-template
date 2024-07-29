@@ -19,7 +19,7 @@ const initialMessages: ChatMessageType[] = [
   },
   {
     id: 3,
-    message: 'Im good',
+    message: 'Im good,thank you! What about you? Help me build a chat please',
     sender: 'user',
   },
 ]
@@ -85,7 +85,7 @@ export const ChatWindow: React.FC = () => {
         style={{
           textAlign: 'center',
           padding: '2px',
-          marginTop: '70px',
+          marginTop: '50px',
           background: 'linear-gradient(135000deg, blue, pink)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -97,7 +97,7 @@ export const ChatWindow: React.FC = () => {
 
           marginBottom: '0px',
         }}>
-        Chat
+        Chat Gpt
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
@@ -106,7 +106,7 @@ export const ChatWindow: React.FC = () => {
             fontSize: '22px',
             // padding: '2px',
             cursor: 'pointer',
-            marginLeft: '850px',
+            marginLeft: '800px',
             marginBottom: '0px',
           }}
           fill="currentColor"
@@ -122,7 +122,7 @@ export const ChatWindow: React.FC = () => {
             fontSize: '22px',
             textAlign: 'center',
             marginTop: '5px',
-            marginLeft: '10px',
+            marginLeft: '15px',
             cursor: 'pointer',
           }}
           fill="currentColor"
@@ -138,7 +138,7 @@ export const ChatWindow: React.FC = () => {
           width="22"
           height="22"
           style={{
-            marginLeft: '10px',
+            marginLeft: '15px',
             cursor: 'pointer',
           }}
           fill="currentColor"
@@ -160,6 +160,7 @@ export const ChatWindow: React.FC = () => {
             height: '400px',
             width: '250px',
             textAlign: 'center',
+
             fontSize: '25px ',
             color: 'black',
             paddingTop: '5pxpx',
@@ -186,12 +187,28 @@ export const ChatWindow: React.FC = () => {
             style={{
               borderColor: 'hsl(240 5.9% 90%)',
             }}></hr>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              fontSize: '22px',
+              alignItems: 'flex-start',
+            }}>
+            <li>John Wesley</li>
+            <li>Harry Potter</li>
+            <li>Jason Born</li>
+            <li>Michael Jordan</li>
+            <li>LeBron James</li>
+            <li>Cristiano Ronaldo</li>
+            <li>Romario</li>
+          </div>
         </div>
         <div
           style={{
             border: '1px solid rgba(0,0,0,0.5)',
             borderColor: 'hsl(240 5.9% 90%)',
-            padding: '20px',
+            padding: '20px 20px 0px 20px',
             marginTop: '0px',
             overflowY: 'scroll',
             overflowX: 'hidden',
@@ -214,7 +231,7 @@ export const ChatWindow: React.FC = () => {
                     marginLeft: '550px',
                     maxHeight: '300px',
                     padding: '5px',
-                    backgroundColor: '#DCDCDC',
+                    backgroundColor: 'hsl(240 4.8% 95.9%)',
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
                   }}>
@@ -237,9 +254,9 @@ export const ChatWindow: React.FC = () => {
                     maxWidth: '25rem',
                     wordBreak: 'break-all',
                     maxHeight: '300px',
-                    padding: '5px',
+                    padding: '10px',
                     margin: '1rem',
-                    backgroundColor: '#DCDCDC',
+                    backgroundColor: 'hsl(240 4.8% 95.9%)',
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
                   }}>
@@ -253,10 +270,10 @@ export const ChatWindow: React.FC = () => {
           <div
             style={{
               marginTop: '15px',
-
+              width: '130%',
               display: 'flex',
-
-              justifyContent: 'center',
+              marginBottom: '5px',
+              // justifyContent: 'center',
               position: 'sticky',
               color: 'black',
               padding: '5px',
@@ -355,7 +372,7 @@ export const ChatWindow: React.FC = () => {
                 cursor: 'pointer',
                 color: 'grey',
               }}
-              href="URL">
+              href="https://github.com/Vadymkozak7/next-pages-template/blob/master/pages/chat.tsx">
               GitHub
             </a>
           </b>
