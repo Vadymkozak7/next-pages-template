@@ -4,6 +4,12 @@ import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import { theme } from '../theme';
 
+// TodoList
+// 1.Create interface for showing messages
+// 2.Create iterface for input and sending button
+// 3.Define types for messages
+// 4.Add states managment
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>

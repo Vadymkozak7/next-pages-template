@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "name": "header",
+      "version": "1.2.3",
+      "description": "Header component",
+      "author": "Vadim",
+      "license": "MIT"
+    },
+    {
+      "name": "footer",
+      "version": "1.0.0",
+      "description": "Footer component",
+      "author": "Vadim",
+      "license": "MIT"
+    }
+  ]
+}

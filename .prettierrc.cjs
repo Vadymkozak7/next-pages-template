@@ -1,1 +1,13 @@
-module.exports = require('eslint-config-mantine/.prettierrc.js');
+module.exports = {
+  bracketSpacing: false,
+  jsxBracketSameLine: true,
+  singleQuote: true,
+  trailingComma: 'es5',
+  semi: false,
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  importOrder: ['^\\u0000', '^@?\\w', '^[^.]', '^\\.'],
+  importOrderSeparation: true,
+  plugins: ['prettier-plugin-tailwindcss'],
+};
