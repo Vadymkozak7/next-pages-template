@@ -86,11 +86,12 @@ export const ChatWindow: React.FC = () => {
           textAlign: 'center',
           padding: '2px',
           marginTop: '50px',
-          background: 'linear-gradient(135000deg, blue, pink)',
+          background: 'linear-gradient(1350000deg, blue, pink)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           position: 'sticky',
           border: '1px solid grey',
+          borderRadius: '10px 10px 0px 0px',
           borderColor: 'hsl(240 5.9% 90%)',
           width: '1120px',
           marginLeft: '60px',
@@ -160,7 +161,7 @@ export const ChatWindow: React.FC = () => {
             height: '400px',
             width: '250px',
             textAlign: 'center',
-
+            borderRadius: ' 0px 0px 0px 10px',
             fontSize: '25px ',
             color: 'black',
             paddingTop: '5pxpx',
@@ -195,13 +196,48 @@ export const ChatWindow: React.FC = () => {
               fontSize: '22px',
               alignItems: 'flex-start',
             }}>
-            <li>John Wesley</li>
-            <li>Harry Potter</li>
-            <li>Jason Born</li>
-            <li>Michael Jordan</li>
-            <li>LeBron James</li>
-            <li>Cristiano Ronaldo</li>
-            <li>Romario</li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              John Wesley
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              Harry Potter
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              Jason Born
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              Michael Jordan
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              LeBron James
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              Cristiano Ronaldo
+            </li>
+            <li
+              style={{
+                marginLeft: '7px',
+              }}>
+              Romario
+            </li>
           </div>
         </div>
         <div
@@ -226,10 +262,13 @@ export const ChatWindow: React.FC = () => {
                   style={{
                     textAlign: 'left',
                     color: 'black',
-                    maxWidth: '25rem',
+                    minWidth: '10px',
+                    minHeight: '50px',
+                    maxWidth: '21rem',
                     wordBreak: 'break-all',
                     marginLeft: '550px',
-                    maxHeight: '300px',
+
+                    // maxHeight: '300px',
                     padding: '5px',
                     backgroundColor: 'hsl(240 4.8% 95.9%)',
                     borderRadius: '7px',
@@ -251,9 +290,12 @@ export const ChatWindow: React.FC = () => {
                   style={{
                     textAlign: 'left',
                     color: 'black',
-                    maxWidth: '25rem',
+                    maxWidth: '21rem',
+                    minWidth: '10px',
+                    minHeight: '50px',
                     wordBreak: 'break-all',
-                    maxHeight: '300px',
+
+                    // maxHeight: '300px',
                     padding: '10px',
                     margin: '1rem',
                     backgroundColor: 'hsl(240 4.8% 95.9%)',
@@ -372,7 +414,7 @@ export const ChatWindow: React.FC = () => {
                 cursor: 'pointer',
                 color: 'grey',
               }}
-              href="https://github.com/Vadymkozak7/next-pages-template/blob/master/pages/chat.tsx">
+              href="https://github.com/Vadymkozak7/next-pages-template">
               GitHub
             </a>
           </b>
