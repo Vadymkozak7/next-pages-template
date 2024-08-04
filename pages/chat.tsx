@@ -1,3 +1,4 @@
+import {before} from 'node:test'
 import React, {useState, useRef, useEffect} from 'react'
 
 interface ChatMessageType {
@@ -95,7 +96,6 @@ export const ChatWindow: React.FC = () => {
           borderColor: 'hsl(240 5.9% 90%)',
           width: '1120px',
           marginLeft: '60px',
-
           marginBottom: '0px',
         }}>
         Chat Gpt
@@ -244,8 +244,9 @@ export const ChatWindow: React.FC = () => {
           style={{
             border: '1px solid rgba(0,0,0,0.5)',
             borderColor: 'hsl(240 5.9% 90%)',
-            padding: '20px 20px 0px 20px',
+            padding: '15px 15px 0px 15px',
             marginTop: '0px',
+
             overflowY: 'scroll',
             overflowX: 'hidden',
             marginLeft: '0px',
@@ -262,48 +263,88 @@ export const ChatWindow: React.FC = () => {
                   style={{
                     textAlign: 'left',
                     color: 'black',
-                    minWidth: '10px',
-                    minHeight: '50px',
-                    maxWidth: '21rem',
-                    wordBreak: 'break-all',
-                    marginLeft: '550px',
 
+                    wordBreak: 'break-all',
+
+                    marginRight: '10px',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
                     // maxHeight: '300px',
                     padding: '5px',
-                    backgroundColor: 'hsl(240 4.8% 95.9%)',
+
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
                   }}>
                   <div
                     style={{
-                      fontWeight: 'bold',
-                      fontSize: '1.5rem',
+                      fontSize: '1rem',
                       textAlign: 'left',
+
+                      padding: '5px',
+
+                      maxWidth: '25rem',
+                      border: '0px solid',
+                      borderRadius: '10px',
+                      backgroundColor: 'hsl(240 4.8% 95.9%)',
                     }}>
-                    {m.sender}
+                    {/* {m.sender} */}
+                    {m.message}
                   </div>
-                  <div>{m.message}</div>
+                  <img
+                    src="https://media.istockphoto.com/id/1213168652/photo/futuristic-robot-artificial-intelligence-concept.jpg?s=1024x1024&w=is&k=20&c=ez780VFDNDyCxx3GX96NJpYRwUlQVvqvlUn48d4AnBI="
+                    alt=""
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      border: '0px solid',
+                      borderRadius: '50%',
+                      marginLeft: '5px',
+                    }}
+                  />
                 </div>
               ) : (
                 <div
                   key={index}
                   style={{
-                    textAlign: 'left',
                     color: 'black',
-                    maxWidth: '21rem',
+                    maxWidth: '25rem',
                     minWidth: '10px',
                     minHeight: '50px',
                     wordBreak: 'break-all',
+                    display: 'flex',
 
-                    // maxHeight: '300px',
                     padding: '10px',
                     margin: '1rem',
-                    backgroundColor: 'hsl(240 4.8% 95.9%)',
+
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
                   }}>
-                  <div style={{fontWeight: 'bold', fontSize: '1.5rem'}}>{m.sender}</div>
-                  <div>{m.message}</div>
+                  <img
+                    src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU"
+                    alt=""
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      border: '0px solid',
+                      borderRadius: '50%',
+                      marginRight: '5px',
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontSize: '1rem',
+                      textAlign: 'left',
+                      display: 'flex',
+                      padding: '5px',
+                      // minWidth: '20px',
+                      // minHeight: '30px',
+                      // maxWidth: '100px',
+                      backgroundColor: 'hsl(240 4.8% 95.9%)',
+                      border: '0px solid',
+                      borderRadius: '10px',
+                    }}>
+                    {m.message}
+                  </div>
                 </div>
               )
             )}
@@ -311,12 +352,13 @@ export const ChatWindow: React.FC = () => {
           </div>
           <div
             style={{
-              marginTop: '15px',
+              marginTop: '50px',
               width: '130%',
               display: 'flex',
-              marginBottom: '5px',
-              // justifyContent: 'center',
+              marginBottom: '1px',
+
               position: 'sticky',
+
               color: 'black',
               padding: '5px',
             }}>

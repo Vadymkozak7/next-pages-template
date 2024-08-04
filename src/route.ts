@@ -15,9 +15,6 @@ export async function POST(request: Request) {
     prompt: z.string(),
   })
   const {prompt} = bodySchema.parse(body)
-
-  const systemPrompt = generateSystemPrompt()
-
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-16k',
