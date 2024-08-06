@@ -242,7 +242,7 @@ export const ChatWindow: React.FC = () => {
         </div>
         <div
           style={{
-            border: '1px solid rgba(0,0,0,0.5)',
+            borderRight: '1px solid hsl(240 5.9% 90%) ',
             borderColor: 'hsl(240 5.9% 90%)',
             padding: '15px 15px 0px 15px',
             marginTop: '0px',
@@ -251,7 +251,7 @@ export const ChatWindow: React.FC = () => {
             overflowX: 'hidden',
             marginLeft: '0px',
             marginRight: '100px',
-            height: '400px',
+            height: '350px',
             maxHeight: '400px',
             width: '900px',
           }}>
@@ -314,7 +314,6 @@ export const ChatWindow: React.FC = () => {
                     display: 'flex',
 
                     padding: '10px',
-                    margin: '1rem',
 
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
@@ -352,21 +351,28 @@ export const ChatWindow: React.FC = () => {
           </div>
           <div
             style={{
-              marginTop: '50px',
-              width: '130%',
+              // marginTop: '50px',
+              width: '877px',
               display: 'flex',
               marginBottom: '1px',
-
-              position: 'sticky',
-
+              borderBottom: '1px solid',
+              borderRight: '1px solid',
+              borderRadius: '0px 0px 10px 0px',
+              top: '439px',
+              right: '100px',
+              marginTop: '0',
+              borderColor: 'hsl(240 5.9% 90%)',
+              padding: '10px',
+              position: 'fixed',
+              // top: '120px',
+              // left: '7px',
               color: 'black',
-              padding: '5px',
             }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
               height="25"
-              style={{marginTop: '8px', marginRight: '10px', cursor: 'pointer'}}
+              style={{marginTop: '8px', marginLeft: '17px', marginRight: '10px', cursor: 'pointer'}}
               fill="currentColor"
               className="bi bi-mic"
               viewBox="0 0 16 16">
@@ -399,7 +405,7 @@ export const ChatWindow: React.FC = () => {
               type="text"
               placeholder="Aa"
               style={{
-                width: '60%',
+                width: '72%',
 
                 fontSize: '20px',
                 border: '1px solid',

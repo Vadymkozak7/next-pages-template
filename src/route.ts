@@ -2,7 +2,7 @@ import {OpenAIStream, StreamingTextResponse} from 'ai' // helpers to deal with a
 import {NextResponse} from 'next/server' // NextJS response helper
 import {ChatCompletionMessageParam} from 'openai/resources/index.mjs' // type definition
 import {z} from 'zod' // used for API scheme validation
-import {openai} from '@/lib/openai' // our openai initializer
+import openai from 'openai/resources/index.mjs'
 
 const generateSystemPrompt = (): ChatCompletionMessageParam => {
   const content = `You are a chat bot and will interact with a user. Be cordial and reply their messages using markdown syntax if needed. If markdown is a code block, specify the programming language accordingly.`
@@ -15,6 +15,7 @@ export async function POST(request: Request) {
     prompt: z.string(),
   })
   const {prompt} = bodySchema.parse(body)
+  const systemPrompt = generateSystemPrompt()
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-16k',
