@@ -1,4 +1,3 @@
-import {before} from 'node:test'
 import React, {useState, useRef, useEffect} from 'react'
 
 interface ChatMessageType {
@@ -41,31 +40,41 @@ export const ChatWindow: React.FC = () => {
       setInput('')
 
       try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/api/route', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            messages: [...messages, userMessage].map((m) => ({
-              role: m.sender === 'AI' ? 'assistant' : 'user',
-              content: m.message,
-            })),
+            prompt: input,
           }),
         })
 
-        const data = await response.json()
+        if (!response.body) {
+          console.error('Нет тела ответа')
+          return
+        }
 
-        if (data.message) {
-          const aiMessage: ChatMessageType = {
-            id: Date.now(),
-            message: data.message.content,
-            sender: 'AI',
-          }
-          setMessages((prevMessages) => [...prevMessages, aiMessage])
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder('utf-8')
+        let result = ''
+
+        while (true) {
+          const {done, value} = await reader.read()
+          if (done) break
+          result += decoder.decode(value, {stream: true})
+
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              id: Date.now(),
+              message: result,
+              sender: 'AI',
+            },
+          ])
         }
       } catch (error) {
-        console.error('Error sending message to OpenAI:', error)
+        console.error('Ошибка при отправке сообщения в OpenAI:', error)
       }
     }
   }
@@ -130,7 +139,7 @@ export const ChatWindow: React.FC = () => {
           className="bi bi-camera-video"
           viewBox="0 0 16 16">
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"
           />
         </svg>
@@ -178,7 +187,7 @@ export const ChatWindow: React.FC = () => {
             className="bi bi-journal-bookmark-fill"
             viewBox="0 0 16 16">
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"
             />
             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
@@ -370,8 +379,8 @@ export const ChatWindow: React.FC = () => {
             }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
+              width="22"
+              height="22"
               style={{marginTop: '8px', marginLeft: '17px', marginRight: '10px', cursor: 'pointer'}}
               fill="currentColor"
               className="bi bi-mic"
@@ -381,8 +390,8 @@ export const ChatWindow: React.FC = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
+              width="22"
+              height="22"
               style={{marginTop: '8px', marginRight: '10px', cursor: 'pointer'}}
               fill="currentColor"
               className="bi bi-file-earmark-image"
@@ -392,8 +401,8 @@ export const ChatWindow: React.FC = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
+              width="22"
+              height="22"
               style={{marginTop: '8px', marginRight: '30px', cursor: 'pointer'}}
               fill="currentColor"
               className="bi bi-emoji-smile"
