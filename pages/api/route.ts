@@ -1,6 +1,6 @@
 import {ChatCompletionMessageParam} from 'openai/resources/index.mjs'
 import {z} from 'zod'
-import openai from 'openai/resources/index.mjs'
+import {openai} from '../openai'
 import type {NextApiRequest, NextApiResponse} from 'next'
 
 const generateSystemPrompt = (): ChatCompletionMessageParam => {
@@ -24,35 +24,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-16k',
+
       temperature: 0.5,
       messages: [systemPrompt, {role: 'user', content: prompt}],
       stream: true,
     })
 
-    // const stream = OpenAIStream(response)
-    // const dataStreamResponse = streamText.toDataStreamResponse(stream) // Use the recommended method
-    // return res.send(dataStreamResponse) // Send the response
+    for await (const chunk of response) {
+      const content = chunk.choices[0]?.delta?.content || ''
+      res.write(`data: ${JSON.stringify({content})}\n\n`)
+    }
 
-    const stream = new ReadableStream({
-      async start(controller) {
-        const reader = response.body?.getReader()
-        if (reader) {
-          while (true) {
-            const {done, value} = await reader.read()
-            if (done) break
-            controller.enqueue(value)
-          }
-          controller.close()
-        } else {
-          controller.error('ReadableStream not supported')
-        }
-      },
-    })
-    return new Response(stream, {
-      headers: {'Content-Type': 'application/json'},
-    })
+    res.end()
   } catch (error) {
-    console.log('error', error)
-    return res.status(500).json({error})
+    const errorMessage = error instanceof Error ? error.message : 'Неизвестная ошибка'
+    console.error('Произошла ошибка:', errorMessage)
+    res.status(500).json({error: errorMessage})
   }
 }

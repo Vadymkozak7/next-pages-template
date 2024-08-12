@@ -280,6 +280,7 @@ export const ChatWindow: React.FC = () => {
                     justifyContent: 'flex-end',
                     // maxHeight: '300px',
                     padding: '5px',
+                    marginBottom: '7px',
 
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
@@ -323,7 +324,7 @@ export const ChatWindow: React.FC = () => {
                     display: 'flex',
 
                     padding: '10px',
-
+                    marginBottom: '3px',
                     borderRadius: '7px',
                     borderColor: 'hsl(240 5.9% 90%)',
                   }}>
